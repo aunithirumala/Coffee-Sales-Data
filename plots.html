@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Sales Analytics Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            margin: 20px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .chart-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .chart-container h2 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            pointer-events: none;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .reset-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .reset-button:hover {
+            background: #2980b9;
+        }
+
+        .axis-label {
+            font-size: 12px;
+            fill: #666;
+        }
+
+        .chart-title {
+            font-size: 14px;
+            fill: #2c3e50;
+            font-weight: 500;
+        }
+
+        svg {
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>Coffee Shop Sales Analytics Dashboard</h1>
+        <button id="resetFilters" class="reset-button">Reset All Filters</button>
+    </div>
+    
+    <div class="grid-container">
+        <div class="chart-container">
+            <h2>Sales by Product Category</h2>
+            <svg id="bar-chart"></svg>
+        </div>
+        <div class="chart-container">
+            <h2>Daily Sales Trend</h2>
+            <svg id="line-chart"></svg>
+        </div>
+        <div class="chart-container">
+            <h2>Price vs Quantity Analysis</h2>
+            <svg id="scatter-plot"></svg>
+        </div>
+        <div class="chart-container">
+            <h2>Sales Distribution</h2>
+            <svg id="distribution-chart"></svg>
+        </div>
+    </div>
+    
+    <script src="plots.js"></script>
+</body>
+</html>
